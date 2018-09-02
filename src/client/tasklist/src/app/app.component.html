@@ -1,0 +1,31 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="container">
+  <h1 class="text-center">
+    任务项目管理
+  </h1>
+  <div class="row">
+    <div class="col-md-12">
+      <form name="inputForm">
+        <div class="input-group">
+          <input type="text" name="taskName" class="form-control" [(ngModel)]="newTaskName" required>
+          <div class="input-group-btn">
+            <button class="btn btn-primary btn-action" type="submit" (click)="createTask()">
+                新增
+            </button>
+        </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div *ngIf="tasklist">
+        <ul>
+          <li *ngFor='let task of tasklist'>{{task.name}}
+            <button class="btn" type="button"  (click)="deleteTask(task)">删除</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
