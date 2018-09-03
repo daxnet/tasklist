@@ -32,6 +32,31 @@ export class TaskListService {
     requestOptionsBuilder.withHeader('Content-Type', 'application/json');
     return this.http.post(url, body, requestOptionsBuilder.build())
       .toPromise()
-      .then(response => response.toString());
+      .then(response => {
+        if (response.status === 201) {
+          return response.json();
+        }
+
+        return null;
+      })
+      .catch(err => {
+        switch (err.status) {
+          case 409:
+              throw Error(`名为${task.name}的任务项目已存在。`);
+        }
+      });
+  }
+
+  deleteTaskById(id: string): Promise<boolean> {
+    const url = `${environment.serviceBaseUrl}?id=${id}`;
+    return this.http.delete(url)
+      .toPromise()
+      .then(response => {
+        if (response.status === 204) {
+          return true;
+        } else {
+          return false;
+        }
+      });
   }
 }

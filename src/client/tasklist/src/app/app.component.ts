@@ -26,7 +26,17 @@ export class AppComponent implements OnInit {
       .then(response => this.tasklist = response);
   }
 
+  createTask(): void {
+    const task = new TaskItem();
+    task.name = this.newTaskName;
+    this.service.addTask(task)
+      .then(response => this.getTaskList())
+      .catch(err => alert(err.message));
+  }
+
   deleteTask(item: TaskItem): void {
-    alert(item.id);
+    this.service.deleteTaskById(item.id)
+      .then(response => this.getTaskList())
+      .catch(err => alert(err));
   }
 }

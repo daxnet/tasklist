@@ -20,11 +20,15 @@
   <div class="row">
     <div class="col-md-12">
       <div *ngIf="tasklist">
+        <hr/>
         <ul>
           <li *ngFor='let task of tasklist'>{{task.name}}
             <button class="btn" type="button"  (click)="deleteTask(task)">删除</button>
           </li>
         </ul>
+      </div>
+      <div *ngIf="!tasklist || tasklist.length===0">
+        <div class="alert alert-secondary">没有可用的任务项目</div>
       </div>
     </div>
   </div>

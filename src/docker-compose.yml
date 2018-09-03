@@ -1,0 +1,23 @@
+version: '3'
+services:
+  db:
+    image: mongo
+    ports:
+      - 27017:27017
+    container_name: tasklist-db
+  
+  tasklist:
+    image: daxnet/tasklist-service
+    build:
+      context: service/tasklist
+      dockerfile: TaskList.Service/Dockerfile
+    links:
+      - db
+    depends_on:
+      - db
+    ports:
+      - 9023:9023
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://*:9023
+    container_name: tasklist-service
