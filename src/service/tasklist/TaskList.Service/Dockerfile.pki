@@ -3,6 +3,9 @@ WORKDIR /app
 EXPOSE 9020
 
 FROM microsoft/dotnet:2.1-sdk AS publish
+COPY PKICertificate/PKI-Root_CA2.crt /usr/local/share/ca-certificates/
+COPY PKICertificate/PKI-Issuing_CA2.crt /usr/local/share/ca-certificates/
+RUN update-ca-certificates
 WORKDIR /src
 COPY . .
 RUN dotnet restore

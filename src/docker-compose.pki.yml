@@ -10,7 +10,7 @@ services:
     image: daxnet/tasklist-service
     build:
       context: service/tasklist
-      dockerfile: TaskList.Service/Dockerfile
+      dockerfile: TaskList.Service/Dockerfile.pki
     links:
       - db
     depends_on:

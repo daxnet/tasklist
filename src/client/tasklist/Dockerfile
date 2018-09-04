@@ -6,4 +6,5 @@ RUN npm install
 RUN ng build --prod
 
 FROM nginx AS final
+COPY nginx.conf /etc/nginx/nginx.conf
 COPY --from=build /src/dist/tasklist /usr/share/nginx/html
