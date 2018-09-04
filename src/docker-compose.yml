@@ -6,7 +6,7 @@ services:
       - 27017:27017
     container_name: tasklist-db
   
-  tasklist:
+  service:
     image: daxnet/tasklist-service
     build:
       context: service/tasklist
@@ -21,3 +21,17 @@ services:
       - ASPNETCORE_ENVIRONMENT=Production
       - ASPNETCORE_URLS=http://*:9023
     container_name: tasklist-service
+
+  web:
+    image: daxnet/tasklist-web
+    build:
+      context: client/tasklist
+      dockerfile: Dockerfile
+    links:
+      - service
+    depends_on:
+      - service
+    ports:
+      - 80:80
+    container_name: tasklist-web
+    
