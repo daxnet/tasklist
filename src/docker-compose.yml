@@ -20,9 +20,9 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
       - ASPNETCORE_URLS=http://*:9020
-      - mongo:server:host=tasklist-db
-      - mongo:server:port=27017
-      - mongo:database=tasklist
+      - mongo__server__host=tasklist-db
+      - mongo__server__port=27017
+      - mongo__database=tasklist
     container_name: tasklist-service
 
   web:
