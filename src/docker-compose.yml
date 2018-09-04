@@ -16,7 +16,7 @@ services:
     depends_on:
       - db
     ports:
-      - 9023:9023
+      - 9020:9020
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
       - ASPNETCORE_URLS=http://*:9020
