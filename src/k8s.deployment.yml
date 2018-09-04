@@ -110,11 +110,11 @@ items:
             value: Production
           - name: ASPNETCORE_URLS
             value: http://*:9020
-          - name: mongo:database
+          - name: mongo__database
             value: tasklist
-          - name: mongo:server:host
+          - name: mongo__server__host
             value: tasklist-db
-          - name: mongo:server:port
+          - name: mongo__server__port
             value: "27017"
           image: daxnet/tasklist-service
           name: tasklist-service
