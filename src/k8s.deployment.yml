@@ -49,6 +49,7 @@ items:
       io.kompose.service: web
     name: web
   spec:
+    type: LoadBalancer
     ports:
     - name: "80"
       port: 80
