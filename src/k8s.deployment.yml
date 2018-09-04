@@ -8,15 +8,15 @@ items:
       kompose.version: 1.16.0 (0c01309)
     creationTimestamp: null
     labels:
-      io.kompose.service: db
-    name: db
+      io.kompose.service: tasklist-db
+    name: tasklist-db
   spec:
     ports:
     - name: "27017"
       port: 27017
       targetPort: 27017
     selector:
-      io.kompose.service: db
+      io.kompose.service: tasklist-db
   status:
     loadBalancer: {}
 - apiVersion: v1
@@ -27,15 +27,15 @@ items:
       kompose.version: 1.16.0 (0c01309)
     creationTimestamp: null
     labels:
-      io.kompose.service: service
-    name: service
+      io.kompose.service: tasklist-service
+    name: tasklist-service
   spec:
     ports:
     - name: "9020"
       port: 9020
       targetPort: 9020
     selector:
-      io.kompose.service: service
+      io.kompose.service: tasklist-service
   status:
     loadBalancer: {}
 - apiVersion: v1
@@ -46,8 +46,8 @@ items:
       kompose.version: 1.16.0 (0c01309)
     creationTimestamp: null
     labels:
-      io.kompose.service: web
-    name: web
+      io.kompose.service: tasklist-web
+    name: tasklist-web
   spec:
     type: LoadBalancer
     ports:
@@ -55,7 +55,7 @@ items:
       port: 80
       targetPort: 80
     selector:
-      io.kompose.service: web
+      io.kompose.service: tasklist-web
   status:
     loadBalancer: {}
 - apiVersion: extensions/v1beta1
@@ -66,8 +66,8 @@ items:
       kompose.version: 1.16.0 (0c01309)
     creationTimestamp: null
     labels:
-      io.kompose.service: db
-    name: db
+      io.kompose.service: tasklist-db
+    name: tasklist-db
   spec:
     replicas: 1
     strategy: {}
@@ -75,7 +75,7 @@ items:
       metadata:
         creationTimestamp: null
         labels:
-          io.kompose.service: db
+          io.kompose.service: tasklist-db
       spec:
         containers:
         - image: mongo
@@ -93,8 +93,8 @@ items:
       kompose.version: 1.16.0 (0c01309)
     creationTimestamp: null
     labels:
-      io.kompose.service: service
-    name: service
+      io.kompose.service: tasklist-service
+    name: tasklist-service
   spec:
     replicas: 1
     strategy: {}
@@ -102,7 +102,7 @@ items:
       metadata:
         creationTimestamp: null
         labels:
-          io.kompose.service: service
+          io.kompose.service: tasklist-service
       spec:
         containers:
         - env:
@@ -131,8 +131,8 @@ items:
       kompose.version: 1.16.0 (0c01309)
     creationTimestamp: null
     labels:
-      io.kompose.service: web
-    name: web
+      io.kompose.service: tasklist-web
+    name: tasklist-web
   spec:
     replicas: 1
     strategy: {}
@@ -140,7 +140,7 @@ items:
       metadata:
         creationTimestamp: null
         labels:
-          io.kompose.service: web
+          io.kompose.service: tasklist-web
       spec:
         containers:
         - image: daxnet/tasklist-web
