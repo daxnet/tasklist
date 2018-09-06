@@ -4,4 +4,9 @@ export class TaskItem {
     hasDone: boolean;
     dateOpened: Date;
     dateDone: Date;
+
+    public get dateOpenedString(): string {
+        // return this.dateOpened.toLocaleDateString();
+        return 'sdf';
+    }
 }

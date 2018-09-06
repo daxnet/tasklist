@@ -36,7 +36,7 @@ namespace TaskList.Service.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAsync() => Ok(await crud.GetAllAsync<TaskItem>());
+        public async Task<IActionResult> GetAsync() => Ok((await crud.GetAllAsync<TaskItem>()).OrderByDescending(x => x.DateOpened));
 
         [HttpPost]
         public async Task<IActionResult> CreateAsync([FromBody] TaskItem task)

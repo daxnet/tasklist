@@ -1,15 +1,13 @@
 <!--The content below is only a placeholder and can be replaced.-->
+
 <div class="container">
-  <h1 class="text-center">
-    任务项目管理
-  </h1>
-  <div class="row">
+  <div class="row mt-3">
     <div class="col-md-12">
       <form name="inputForm">
         <div class="input-group">
           <input type="text" name="taskName" class="form-control" [(ngModel)]="newTaskName" required>
           <div class="input-group-btn">
-            <button class="btn btn-primary btn-action" type="submit" (click)="createTask()">
+            <button class="btn btn-primary btn-action ml-2" type="submit" (click)="createTask()">
                 新增
             </button>
         </div>
@@ -20,16 +18,27 @@
   <div class="row">
     <div class="col-md-12">
       <div *ngIf="tasklist">
-        <hr/>
-        <ul>
-          <li *ngFor='let task of tasklist'>{{task.name}}
-            <button class="btn" type="button"  (click)="deleteTask(task)">删除</button>
-          </li>
-        </ul>
+        <!-- <hr/> -->
+        <div class="row">
+          <div *ngFor='let task of tasklist' class="col-xs-4 col-lg-4 mt-3 mb-2">
+            <div class="card">
+              <div class="card-header">
+                  <h4>{{task.dateOpened | date:'medium'}}</h4>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title"></h5>
+                <p class="card-text">{{task.name}}</p>
+                <button type="button" class="btn btn-danger float-right" (click)='deleteTask(task)'>删除</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div *ngIf="!tasklist || tasklist.length===0">
-        <div class="alert alert-secondary">没有可用的任务项目</div>
+        <div class="alert alert-warning mt-3">没有可以显示的任务项目</div>
       </div>
     </div>
   </div>
 </div>
+
+
