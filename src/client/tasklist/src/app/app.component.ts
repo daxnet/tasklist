@@ -30,7 +30,10 @@ export class AppComponent implements OnInit {
     const task = new TaskItem();
     task.name = this.newTaskName;
     this.service.addTask(task)
-      .then(response => this.getTaskList())
+      .then(
+        response => {this.getTaskList();
+        this.newTaskName = '';
+      })
       .catch(err => alert(err.message));
   }
 
